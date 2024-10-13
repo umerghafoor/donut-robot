@@ -43,9 +43,10 @@ while ~exit_menu
             end
             
         case 4
-            csv_choice = menu('Load from CSV Workspace', ...
+            csv_choice = menu('Load Workspace from CSV ', ...
                 'Random Plot', ...
-                'Sequential Plot');
+                'Sequential Plot', ...
+                'Both with heat map');
             
             switch csv_choice
                 case 1
@@ -85,6 +86,8 @@ while ~exit_menu
                     title('3D Plot of XYZ Points');
 
                     axis equal;
+                case 3
+                    simulation_both
                     
                 otherwise
                     disp('No plot option was selected.');
@@ -104,7 +107,7 @@ while ~exit_menu
             y = input('Enter y: ');
             z = input('Enter z: ');
 
-            r = createrobot(theta, 'd');
+            r = createrobot();
 
             joint_angles = inverseKinematics(r,[x, y, z]);
 
